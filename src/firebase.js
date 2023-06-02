@@ -12,9 +12,9 @@ const firebaseConfig = {
 };
 
 // Firebase 초기화
-const app = initializeApp(firebaseConfig);
+const firebase = initializeApp(firebaseConfig);
 
 // Firestore 초기화
-const firestore = getFirestore(app);
+const firestore = getFirestore(firebase);
 
-export { app, firestore };
+export { firebase, firestore };
