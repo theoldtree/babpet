@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   // Firebase에서 제공하는 구성 정보를 입력합니다.
@@ -18,4 +19,7 @@ const firebase = initializeApp(firebaseConfig);
 // Firestore 초기화
 const firestore = getFirestore(firebase);
 
-export { firebase, firestore };
+// Auth 초기화
+const authService = getAuth(firebase);
+
+export { firebase, firestore, authService };
