@@ -1,40 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import tShirt from "../assets/chimChak_T_shirt.png";
+import tShirt2 from "../assets/chimChak_T_shirt2.png";
 
 const ProductContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
 `;
 
 const ProductImage = styled.img`
   width: 200px;
   height: 200px;
-  margin-right: 20px;
+  margin-bottom: 20px;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 10px;
 `;
 
-const Button = styled.button`
+const IconButton = styled.button`
   padding: 10px;
-  background-color: #f50057;
-  color: #fff;
+  background-color: transparent;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
   cursor: pointer;
-  margin-right: 10px;
 `;
 
 export default function Product() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [
-    "../assets/chimChak_T_shirt.jpg",
-    "path_to_image2.jpg",
-    "path_to_image3.jpg",
-  ];
+  const images = [tShirt, tShirt2];
 
   const previousImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -50,12 +47,16 @@ export default function Product() {
 
   return (
     <ProductContainer>
-      <div>product</div>
       <ProductImage src={images[currentImageIndex]} alt="Product Image" />
       <ButtonContainer>
-        <Button onClick={previousImage}>이전</Button>
-        <Button onClick={nextImage}>다음</Button>
+        <IconButton onClick={previousImage}>
+          <FiChevronLeft size={24} />
+        </IconButton>
+        <IconButton onClick={nextImage}>
+          <FiChevronRight size={24} />
+        </IconButton>
       </ButtonContainer>
+      <button>구매</button>
     </ProductContainer>
   );
 }
