@@ -1,56 +1,116 @@
-import React from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCoffee,
+  faAdjust,
+  faAirFreshener,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import Company from "./Company";
-import Product from "./Product";
 
 const TabNav = styled.nav`
-  ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #263343;
+  padding: 8px 12px;
 
-  li {
-    margin-right: 10px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
-const TabLink = styled(NavLink)`
-  text-decoration: none;
-  color: #000;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+const Logo = styled.div`
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 0px 5px;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+const Menu = styled.ul`
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+  }
+  li: hover {
+    background-color: #d49466;
+    border-radius: 4px;
+    @media (max-width: 768px) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+`;
 
-  &.activeclassname {
-    background-color: #ccc;
+const Links = styled.ul`
+  display: flex;
+  list-style: none;
+  color: white;
+  li {
+    padding: 0px 12px;
+  }
+  @media (max-width: 768px) {
+    padding-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+`;
+
+const HamburgIcon = styled(FontAwesomeIcon)`
+  color: #d49466;
+  font-size: 24px;
+  position: absolute;
+  right: 30px;
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
 export default function Home() {
+  const [toggle, setToggle] = useState(false);
+
+  const onClick = () => {
+    toggle ? setToggle(false) : setToggle(true);
+  };
   return (
     <div>
       <TabNav>
-        <ul>
+        <HamburgIcon icon={faBars} onClick={onClick} />
+        <Logo>
+          <FontAwesomeIcon icon={faCoffee} size="lg" color="#d49466" />
+          <a href="">Babpet</a>
+        </Logo>
+        <Menu>
           <li>
-            <TabLink to="/company" activeclassname="active">
-              회사소개
-            </TabLink>
+            <a href="">Company</a>
           </li>
           <li>
-            <TabLink to="/product" activeclassname="active">
-              제품소개
-            </TabLink>
+            <a href="">Product</a>
           </li>
-        </ul>
+        </Menu>
+        <Links>
+          <li>
+            <FontAwesomeIcon icon={faAdjust} />
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faAirFreshener} />
+          </li>
+        </Links>
       </TabNav>
-
-      <Routes>
-        <Route path="/company" element={<Company />} />
-        <Route path="/product" element={<Product />} />
-      </Routes>
     </div>
   );
 }
