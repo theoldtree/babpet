@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import tShirt from "../assets/chimChak_T_shirt.png";
 import tShirt2 from "../assets/chimChak_T_shirt2.png";
+import Header from "components/Header";
 
 const ProductContainer = styled.div`
   display: flex;
@@ -46,17 +47,20 @@ export default function Product() {
   };
 
   return (
-    <ProductContainer>
-      <ProductImage src={images[currentImageIndex]} alt="Product Image" />
-      <ButtonContainer>
-        <IconButton onClick={previousImage}>
-          <FiChevronLeft size={24} />
-        </IconButton>
-        <IconButton onClick={nextImage}>
-          <FiChevronRight size={24} />
-        </IconButton>
-      </ButtonContainer>
-      <button>구매</button>
-    </ProductContainer>
+    <div>
+      <Header />
+      <ProductContainer>
+        <ProductImage src={images[currentImageIndex]} alt="Product Image" />
+        <ButtonContainer>
+          <IconButton onClick={previousImage}>
+            <FiChevronLeft size={24} />
+          </IconButton>
+          <IconButton onClick={nextImage}>
+            <FiChevronRight size={24} />
+          </IconButton>
+        </ButtonContainer>
+        <button>구매</button>
+      </ProductContainer>
+    </div>
   );
 }
