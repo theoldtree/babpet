@@ -78,6 +78,22 @@ export default function Company() {
           </Section>
         </RowDiv>
       </Section>
+      <Section>
+        <h1>임포시블 제조과정 및 제품을 소개합니다.</h1>
+        <div>
+          <span>
+            10여가지 원재료를 최상의 배합으로 오픈베이킹 1차 작업 후 2차
+            열풍건조로 완전 건조시킨 큐브형 영양간식, 노즈워킹용이나
+            훈련보상용으로 최적화된 간식.
+          </span>
+        </div>
+        <div>
+          <span>
+            원재료 100% 활용한 천연껌류 간식, 단순히 먹는 즐거움 뿐만이 아니라
+            오랜시간 가지고 놀면서 정서적 안정감을 줄 수 있는 간식
+          </span>
+        </div>
+      </Section>
       <Footer />
     </div>
   );
